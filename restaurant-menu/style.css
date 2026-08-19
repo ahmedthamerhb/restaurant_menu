@@ -1,0 +1,455 @@
+/* ==========================================================================
+   1. الإعدادات العامة والألوان (Reset & Base Styles)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #222222;
+    direction: rtl;
+    scroll-behavior: smooth;
+    
+}
+
+/* ==========================================================================
+   2. الهيدر وشريط التصفح (Header & Navigation)
+   ========================================================================== */
+h1 {
+    background-color: #d63031;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 26px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+h1 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    background-color: #f1c40f;
+    color: #222222;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #d63031;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   3. عناوين الأقسام والوجبات (Menu Sections & Cards)
+   ========================================================================== */
+h2 {
+    color: #d63031;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 22px;
+    border-bottom: 3px solid #f1c40f;
+    padding-bottom: 8px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background-color: #fff9e6;
+    border: 1px solid #ffeaa7;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item img {
+    width: 100%;
+    max-width: 250px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto 10px auto;
+    display: block;
+}
+
+.menu-item h3 {
+    color: #222222;
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+}
+
+.menu-item p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: block;
+    color: #d63031;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #d63031;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #b22222;
+}
+
+/* ==========================================================================
+   4. الأيقونات العائمة (Floating Buttons)
+   ========================================================================== */
+.floating-cart-btn,
+.floating-scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+}
+
+.floating-cart-btn {
+    right: 20px;
+    background-color: #d63031;
+    color: white;
+}
+
+/* الأيقونة العائمة للصعود للأعلى */
+.floating-scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #d63031;
+    /* أحمر متناسق مع الهيدر */
+    color: #ffffff;
+    border: 2px solid #f1c40f;
+    /* إطار ذهبي متناسق مع الأزرار */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+
+    /* إخفاء الزر افتراضياً مع إضافة حركة تنقل ناعمة */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* حالة ظهور الزر عند التمرير للأسفل */
+.floating-scroll-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.floating-scroll-btn:hover {
+    background-color: #b22222;
+    transform: translateY(-3px);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f1c40f;
+    color: #222;
+    font-size: 12px;
+    font-weight: bold;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   5. نافذة السلة (Cart Modal)
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.general-note-container {
+    margin: 15px 0;
+    text-align: right;
+}
+
+.general-note-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.general-note-container textarea {
+    width: 100%;
+    height: 70px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+}
+
+.modal-summary {
+    text-align: center;
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.whatsapp-send-btn {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.whatsapp-send-btn:hover {
+    background-color: #1ebc57;
+}
+
+/* تنسيق حقول بيانات الزبون */
+.customer-info-container {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #d63031;
+}
+
+/* ==========================================================================
+   6. الفوتر الاحترافي (Footer - LTR Direction)
+   ========================================================================== */
+footer {
+    background-color: #f39c12;
+    color: #ffffff;
+    padding: 35px 20px 20px 20px;
+    margin-top: 50px;
+    direction: ltr;
+    /* جعل الاتجاه من اليسار لليمين */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: left;
+    /* محاذاة النصوص لليسار */
+}
+
+.footer-brand h3 {
+    font-size: 22px;
+    color: #d63031;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    color: #fff3e0;
+    margin-bottom: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.social-links a {
+    background-color: #ffffff;
+    color: #d63031;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a:hover {
+    background-color: #d63031;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li a {
+    color: #fff3e0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* ==========================================================================
+   7. تنسيقات لوحة التحكم (Admin Panel Styles)
+   ========================================================================== */
+#admin-modal select {
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+#admin-modal select:focus {
+    border-color: #d63031;
+}
+
+#admin-login-sec {
+    padding: 10px 0;
+}
+
+#admin-panel-sec {
+    text-align: right;
+    margin-top: 10px;
+}
