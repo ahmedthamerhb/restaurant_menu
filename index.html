@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <!-- مكتبة الأيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1><a href="#">Restaurant Menu</a></h1>
+    
+    <nav>
+        <ul>
+            <li><a href="#meals">الوجبات الرئيسيّة</a></li>
+            <li><a href="#drinks">المشروبات</a></li>
+            <li><a href="#appetizers">المقبلات</a></li>
+        </ul>
+    </nav>
+
+    <!-- قسم الوجبات الرئيسيّة -->
+    <h2>الوجبات الرئيسيّة</h2>
+    <section id="meals">
+        <div class="menu-item">
+            <img src="Classic-Burger (1).png" alt="بركر لحم كلاسيك">
+            <h3>بركر لحم كلاسيك</h3>
+            <p>بركر لحم كلاسيك مع الجبن والخس والطماطم والصلصة الخاصة.</p>
+            <span class="price">السعر : 7,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(1, 'بركر لحم كلاسيك', 7000)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="pizze.png" alt="بيتزا ببروني كبير">
+            <h3>بيتزا ببروني كبير</h3>
+            <p>بيتزا ببروني كبير مع الجبن والخس والطماطم والصلصة الخاصة.</p>
+            <span class="price">السعر : 12,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(2, 'بيتزا ببروني كبير', 12000)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="KFC.png" alt="وجبة كنتاكي 5 قطع">
+            <h3>وجبة كنتاكي 5 قطع</h3>
+            <p>وجبة كنتاكي 5 قطع مع البطاطس المقلية والمشروب.</p>
+            <span class="price">السعر : 10,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(3, 'وجبة كنتاكي 5 قطع', 10000)">إضافة للسلة</button>
+        </div>
+    </section>
+
+    <!-- قسم المشروبات -->
+    <h2>المشروبات</h2>
+    <section id="drinks">
+        <div class="menu-item">
+            <img src="cocagola.png" alt="كوكاكولا">
+            <h3>كوكاكولا</h3>
+            <span class="price">السعر : 500</span>
+            <button class="add-to-cart-btn" onclick="addToCart(4, 'كوكاكولا', 500)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="orange.png" alt="عصير برتقال طبيعي">
+            <h3>عصير برتقال طبيعي</h3>
+            <span class="price">السعر : 5,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(5, 'عصير برتقال طبيعي', 5000)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="water.png" alt="ماء">
+            <h3>ماء</h3>
+            <span class="price">السعر : 250</span>
+            <button class="add-to-cart-btn" onclick="addToCart(6, 'ماء', 250)">إضافة للسلة</button>
+        </div>
+    </section>
+
+    <!-- قسم المقبلات -->
+    <h2>المقبلات</h2>
+    <section id="appetizers">
+        <div class="menu-item">
+            <img src="hummus.png" alt="حمص">
+            <h3>حمص</h3>
+            <span class="price">السعر : 6,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(7, 'حمص', 6000)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="baba-ganoush.png" alt="بابا غنوج">
+            <h3>بابا غنوج</h3>
+            <span class="price">السعر : 4,500</span>
+            <button class="add-to-cart-btn" onclick="addToCart(8, 'بابا غنوج', 4500)">إضافة للسلة</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="warak-enab.png" alt="ورق عنب">
+            <h3>ورق عنب</h3>
+            <span class="price">السعر : 5,000</span>
+            <button class="add-to-cart-btn" onclick="addToCart(9, 'ورق عنب', 5000)">إضافة للسلة</button>
+        </div>
+    </section>
+
+    <!-- الأيقونة الدائرية العائمة للسلة (يمين الشاشة) -->
+    <div class="floating-cart-btn" onclick="openCartModal()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-badge" class="cart-badge">0</span>
+    </div>
+
+    <!-- الأيقونة الدائرية العائمة للصعود للأعلى (يسار الشاشة) -->
+    <div class="floating-scroll-btn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- نافذة السلة (Modal) -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2>سلة الطلبات</h2>
+            
+            <div id="cart-items-container">
+                <!-- العناصر المضافة ستظهر هنا -->
+            </div>
+
+            <!-- حقول معلومات الزبون (إجباري) -->
+            <div class="customer-info-container">
+                <div class="input-group">
+                    <label for="customer-name">الاسم الكامل <span style="color: red;">*</span></label>
+                    <input type="text" id="customer-name" placeholder="أدخل اسمك هنا..." required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="customer-phone">رقم الهاتف <span style="color: red;">*</span></label>
+                    <input type="tel" id="customer-phone" placeholder="077XXXXXXXX" required>
+                </div>
+            </div>
+
+            <!-- حقل الملاحظة العامة للطلب -->
+            <div class="general-note-container">
+                <label for="general-note">ملاحظات على الطلب:</label>
+                <textarea id="general-note" placeholder="اكتب أي ملاحظة إضافية هنا..."></textarea>
+            </div>
+
+            <div class="modal-summary">
+                <h3>المجموع الكلي: <span id="modal-total">0</span> د.ع</h3>
+                <button class="whatsapp-send-btn" onclick="sendOrderToWhatsApp()">إرسال الطلب عبر الواتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer متكامل واحترافي بتنسيق LTR -->
+    <footer>
+        <div class="footer-container">
+            <!-- القسم الأول: الشعار ووسائل التواصل -->
+            <div class="footer-brand">
+                <h3>Master Chefs</h3>
+                <p>تجربة مميزة في كل وجبة</p>
+                <div class="social-links">
+                    <a href="https://wa.me/9647750507632" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/ahm_th1?igsh=cnVtdjM2MXA0dHY=" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-thamer-047982381" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- القسم الثاني: الدعم -->
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Support Center</a></li>
+                </ul>
+            </div>
+
+            <!-- القسم الثالث: لوحة الأدمن -->
+            <div class="footer-column">
+                <h4>Admin</h4>
+                <ul>
+                    <li><a href="admin.html">Control Panel</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
